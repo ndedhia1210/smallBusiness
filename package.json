@@ -1,0 +1,19 @@
+{
+  "name": "Service",
+  "version": "0.0.1",
+  "description": "Project Description",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "the repositories url"
+  },
+  "author": "ND",
+  "license": "N/A",
+  "keywords": [],
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
