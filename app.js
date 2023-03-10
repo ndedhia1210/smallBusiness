@@ -29,6 +29,7 @@ function run() {
     );
 }
 
+run();
 
 app.get("/", (req, res, next) => {
     res.json("Welcome to our web-service environment!");
@@ -79,6 +80,5 @@ app.post('/product', function(req, res, next){
 });
 
 app.listen(3000, () => {
-    run();
     console.log("Server running on port 3000");
 });
