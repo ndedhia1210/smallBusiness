@@ -14,7 +14,6 @@
   "license": "N/A",
   "keywords": [],
   "dependencies": {
-    "@cyclic.sh/dynamodb": "0.0.33",
     "express": "^4.18.2",
     "mongodb": "^5.1.0"
   }
