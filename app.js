@@ -1,22 +1,14 @@
 var express = require("express");
 var app = express();
+const PORT = process.env.PORT || 3000
 
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
-const uri = "mongodb+srv://ndedhia1210:mEVnUzSEUc98KdpO@smallbusinesses.qj2ldxf.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGO_CONNECTION_STRING;
+console.log(uri);
+// const uri = "mongodb+srv://ndedhia1210:mEVnUzSEUc98KdpO@smallbusinesses.qj2ldxf.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 let productdb;
 
-// Approach 1 of connecting to Mongo 
-// async function run() {
-//     try {
-//         conn = await client.connect();
-//         console.log("Connected successfully to server");
-//     } catch(e) {
-//         console.error(e);
-//     }
-// }
-
-// Approach 2 of connecting to Mongo 
 function run() {
     client.connect()
     .then(
@@ -24,9 +16,16 @@ function run() {
             let conn = connection;
             productdb = conn.db("small-business").collection('product');
             console.log("Connected successfully to server");
-        },
-        (error) => { console.log(error) }
-    );
+
+            app.listen(PORT, () => {
+                console.log("listening for requests");
+            })
+        }
+    )
+    .catch((error) => {
+        console.error(error); 
+        return false;
+    });
 }
 
 run();
@@ -79,6 +78,6 @@ app.post('/product', function(req, res, next){
     )
 });
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
-});
+// app.listen(3000, () => {
+//     console.log("Server running on port 3000");
+// });

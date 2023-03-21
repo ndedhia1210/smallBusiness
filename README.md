@@ -7,7 +7,7 @@
 
 ### Run locally 
 - node app.js
-- Visit http://localhost:3000/sample
+- Visit http://localhost:3000/test
 
 ### How to deploy?
 - Just commit your changes and push it to Master it will automatically get deploy
