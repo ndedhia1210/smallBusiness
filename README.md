@@ -13,8 +13,13 @@ npm i
 
 - Set Mongo uri on local machine using (Please collect **MongoURI** this from MongoOwner)
 ```
-export MONGO_CONNECTION_STRING=<MongoURI>
+export MONGO_CONNECTION_STRING="<MongoURI>"
 ````
+
+- Source bash_profile
+```
+source ~/.bash_profile 
+```
 
 - Run App locally
 ```
