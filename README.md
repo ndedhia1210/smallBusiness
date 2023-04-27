@@ -23,12 +23,12 @@ source ~/.bash_profile
 
 - Run App locally
 ```
-node app.js
+npm start
 ```
 
 - Visit following Url to test local instance
 ```
-http://localhost:3000/test
+http://localhost:3000/
 ```
 
 

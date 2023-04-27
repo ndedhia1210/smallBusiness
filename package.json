@@ -1,10 +1,11 @@
 {
-  "name": "Service",
+  "name": "SmallBusinessBackend",
   "version": "0.0.1",
-  "description": "Project Description",
+  "description": "This is a backend for small business app which will be used for loading data.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
