@@ -12,6 +12,7 @@ app.get("/", (req, res, next) => {
 // Binding routes to express app
 require('./app/user/routes')(app);
 require('./app/category/routes')(app);
+require('./app/auth/routes')(app);
 
 // PORT value will be extracted from environment variable 
 // If not set then it will run on default port i.e. 3000
