@@ -1,10 +1,18 @@
 // following function will be reused to return error 
 // with given error code and message
 module.exports = {
-    sendError(res, code, error) {
+    sendError(res, code, errorMessage) {
         res.status(code);
         res.json({
-            error: error
+            code,
+            errorMessage
         });
     }
 };
+
+// const errorCodeToMEssageMapping = {
+//     401: 'Not avaolbale',
+//     500: 'Server eerror',
+//     504: ''
+//     ...
+// }

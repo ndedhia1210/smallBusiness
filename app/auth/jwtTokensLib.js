@@ -32,6 +32,6 @@ exports.authenticateToken = (req, res, next) => {
       next(); 
     }); 
   } catch(error) {
-    return sendError(error, 500, "Authorization error!");  
+    return sendError(res, 500, "Authorization error!");  
   }
 }; 
