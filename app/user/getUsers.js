@@ -4,8 +4,8 @@ exports.getUsers = (req, res) => {
     .then( 
         (users) => { res.json(users) },
         (error) => { 
-            console.log("Failed to fetch users!");  
-            res.send(error);
+            console.log("Failed to fetch users!", error);
+            return sendError(res, 500, 'Something went wrong!');
         }
     )
 }

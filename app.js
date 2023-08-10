@@ -4,6 +4,15 @@ var app = express();
 // For parsing application/json payload
 app.use(express.json());
 
+// Swagger API documentation
+var swaggerUi = require('swagger-ui-express');
+const swaggerSetup = swaggerUi.setup(
+    require('./app/swagger/swagger').apiDocumentation, // API Documentation configuration
+    undefined, 
+    { supportedSubmitMethods: [] } // To disable Try it out option from swagger ui
+);
+app.use("/apiDocumentations", swaggerUi.serve, swaggerSetup);
+
 // Home page - test
 app.get("/", (req, res, next) => {
     res.json("Welcome to KiranaShop backend environment!");

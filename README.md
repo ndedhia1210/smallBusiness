@@ -39,6 +39,13 @@ http://localhost:3000/
 - git commit -m "< Add your message >"
 - git push -u origin main
 
+### How to publish PR
+// Make sure you are in appropriate feature branch
+- git add .
+- git commit -m "< Add your message >"
+- git push -u origin <Feature_branch_name>
+- Go to github and create pull request
+
 
 ### How to deploy?
 - Just commit your changes and push it to Master it will automatically get deployed
