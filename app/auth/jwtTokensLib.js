@@ -18,13 +18,16 @@ exports.createToken = (user) => {
 exports.authenticateToken = (req, res, next) => { 
   try {
     const authHeader = req.headers["authorization"]; 
+    if(!authHeader)
+      return sendError(res, 400, "Missing token!");
     const splitToken = authHeader && authHeader.split(" "); 
+
     if (splitToken[0] !== process.env.JWT_TOKEN_PREFIX) 
       return sendError(res, 401, "Invalid token!"); 
     
     const token = splitToken[1];
     if (token === null) 
-      return res.status(400).json({ msg: "Missing token!" }); 
+      return sendError(res, 400, "Missing token!");
 
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => { 
       if (err) return sendError(res, 401, "Invalid token!");  
@@ -32,6 +35,7 @@ exports.authenticateToken = (req, res, next) => {
       next(); 
     }); 
   } catch(error) {
+    console.log(error);
     return sendError(res, 500, "Authorization error!");  
   }
 }; 
