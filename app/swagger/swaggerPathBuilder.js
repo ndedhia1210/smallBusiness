@@ -3,7 +3,12 @@ exports.generateApiPathList = () => {
     const swaggerFormattedServiceDoc = {};
     Object.keys(apis).forEach(api => {
         const apiDoc = {};
-        buildParameterList(apiDoc, apis[api]['header'], 'header');
+        if(apis[api]['parameters'] && apis[api]['parameters']['query']) {
+            buildParameterList(apiDoc, apis[api]['parameters']['query'], 'query');
+        }
+        if(apis[api]['parameters'] && apis[api]['parameters']['header']) {
+            buildParameterList(apiDoc, apis[api]['parameters']['header'], 'header');
+        }
         apiDoc[apis[api]['method']] = {
             operationId: apis[api]['name'],
             description: apis[api]['description'],
@@ -17,11 +22,15 @@ exports.generateApiPathList = () => {
         swaggerFormattedServiceDoc[api] = apiDoc;
     });
 
+    // console.log(JSON.stringify(swaggerFormattedServiceDoc, null, 6));
     return swaggerFormattedServiceDoc;
 }
 
 function buildParameterList(swaggerFormattedServiceDoc, parameterObj, parameterType) {
-    const parameters = [];
+    let parameters = [];
+    if(swaggerFormattedServiceDoc['parameters'])
+        parameters = swaggerFormattedServiceDoc['parameters'];
+
     Object.keys(parameterObj).forEach(parameter => {
         parameters.push({
             name: parameter,
@@ -30,7 +39,8 @@ function buildParameterList(swaggerFormattedServiceDoc, parameterObj, parameterT
             type: parameterObj[parameter].type
         });
     });
-    swaggerFormattedServiceDoc['parameters'] = parameters;
+    
+    swaggerFormattedServiceDoc['parameters'] = (parameters);
 }
 
 function buildRequestBody(swaggerRequestBodyMap, serviceRequestObj) {

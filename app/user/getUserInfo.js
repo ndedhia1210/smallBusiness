@@ -70,7 +70,7 @@ exports.getUserInfo_v1 = (req, res) => {
 
 function validateGetUserInfoRequest(request) {
     return new Promise(function (resolve, reject) {
-        const payload = request.body;
+        const payload = request.query;
         const schema = Joi.object({
             username: Joi.string().trim().valid(request.user.username).required(), // character limit 5-30 and alpha numeric
         });

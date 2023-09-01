@@ -7,7 +7,9 @@ module.exports = {
             name: 'Users data',
             description: 'This service is used for loading all user\'s!',
             tags: ['User'],
-            header: { ...jwtTokenHeader },
+            parameters: {
+                header: { ...jwtTokenHeader }
+            },
             responseType: 'array',
             response: {
                 '200': {
@@ -72,7 +74,9 @@ module.exports = {
             name: 'User registration',
             description: 'This service is used for user registering!',
             tags: ['User'],
-            header: { ...deviceIdHeader },
+            parameters: {
+                header: { ...deviceIdHeader }
+            },
             request: {
                 name: {
                     type: 'string', 
@@ -119,12 +123,15 @@ module.exports = {
             name: 'User information',
             description: 'This service is used for getting user details!',
             tags: ['User'],
-            header: { ...jwtTokenHeader, ...deviceIdHeader },
-            request: {
-                username: {
-                    type: 'string', 
-                    example: 'mtripathi',
-                    required: true
+            parameters: {
+                header: { ...jwtTokenHeader, ...deviceIdHeader },
+                query: {
+                    username: {
+                        type: 'string', 
+                        example: 'mtripathi',
+                        required: true,
+                        description: 'This is username and should be pass as query string in api'
+                    }
                 }
             },
             response: {
@@ -170,7 +177,9 @@ module.exports = {
             name: 'User password reset',
             description: 'This service is used for resetting user\'s password!',
             tags: ['User'],
-            header: { ...jwtTokenHeader, ...deviceIdHeader },
+            parameters: {
+                header: { ...jwtTokenHeader, ...deviceIdHeader }
+            },
             request: {
                 username: {
                     type: 'string', 
@@ -198,7 +207,9 @@ module.exports = {
             name: 'Forgot user password',
             description: 'This service is used for resetting user\'s password after forgot password!',
             tags: ['User'],
-            header: { ...deviceIdHeader },
+            parameters: {
+                header: { ...deviceIdHeader }
+            },
             request: {
                 username: {
                     type: 'string', 
@@ -226,7 +237,9 @@ module.exports = {
             name: 'Update user information',
             description: 'This service is used for updating user\'s info except password!',
             tags: ['User'],
-            header: { ...jwtTokenHeader, ...deviceIdHeader },
+            parameters: {
+                header: { ...jwtTokenHeader, ...deviceIdHeader }
+            },
             request: {
                 username: {
                     type: 'string', 
@@ -267,7 +280,9 @@ module.exports = {
             name: 'Approve user profile',
             description: 'This service is used for approving user\'s profile by admin!',
             tags: ['User'],
-            header: { ...jwtTokenHeader, ...deviceIdHeader },
+            parameters: {
+                header: { ...jwtTokenHeader, ...deviceIdHeader }
+            },
             request: {
                 userId: {
                     type: 'string', 
